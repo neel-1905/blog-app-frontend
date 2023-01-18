@@ -20,7 +20,7 @@ const EditBlog = () => {
     (async () => {
       try {
         const res = await fetch(
-          `http://localhost:3001/blogs/getOne/${param?.id}`,
+          `https://blog-app-backend-one.vercel.app/blogs/getOne/${param?.id}`,
           {
             method: "GET",
             headers: {
