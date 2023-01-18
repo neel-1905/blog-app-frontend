@@ -14,17 +14,20 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      const res = await fetch("http://localhost:3001/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: registerDetails?.name,
-          email: registerDetails?.email,
-          password: registerDetails?.password,
-        }),
-      });
+      const res = await fetch(
+        "https://blog-app-backend-one.vercel.app/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: registerDetails?.name,
+            email: registerDetails?.email,
+            password: registerDetails?.password,
+          }),
+        }
+      );
 
       const formatRes = await res.json();
 

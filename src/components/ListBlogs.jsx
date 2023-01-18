@@ -11,13 +11,16 @@ const ListBlogs = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("http://localhost:3001/blogs/all", {
-          method: "GET",
-          headers: {
-            token: localStorage.getItem("token"),
-            "Content-Type": "application/json",
-          },
-        });
+        const res = await fetch(
+          "https://blog-app-backend-one.vercel.app/blogs/all",
+          {
+            method: "GET",
+            headers: {
+              token: localStorage.getItem("token"),
+              "Content-Type": "application/json",
+            },
+          }
+        );
         const blogData = await res.json();
         setBlogDetails(blogData.blogs);
       } catch (err) {
@@ -28,13 +31,16 @@ const ListBlogs = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3001/blogs/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          token: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://blog-app-backend-one.vercel.app/blogs/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            token: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const formatRes = await res.json();
 
       if (!formatRes?.isSuccess) {

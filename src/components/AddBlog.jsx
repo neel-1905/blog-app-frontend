@@ -16,20 +16,23 @@ const AddBlog = () => {
 
   const handleAddBlog = async () => {
     try {
-      const res = await fetch("http://localhost:3001/blogs/addBlog", {
-        method: "POST",
-        headers: {
-          token: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: blogDetails?.title,
-          category: blogDetails?.category,
-          content: blogDetails?.content,
-          author: blogDetails?.author,
-          time,
-        }),
-      });
+      const res = await fetch(
+        "https://blog-app-backend-one.vercel.app/blogs/addBlog",
+        {
+          method: "POST",
+          headers: {
+            token: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: blogDetails?.title,
+            category: blogDetails?.category,
+            content: blogDetails?.content,
+            author: blogDetails?.author,
+            time,
+          }),
+        }
+      );
       const formatRes = await res.json();
       if (!formatRes?.isSuccess) {
         throw new Error(formatRes?.message);

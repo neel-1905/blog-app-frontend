@@ -28,16 +28,19 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("http://localhost:3001/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: loginDetails?.email,
-          password: loginDetails?.password,
-        }),
-      });
+      const res = await fetch(
+        "https://blog-app-backend-one.vercel.app/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: loginDetails?.email,
+            password: loginDetails?.password,
+          }),
+        }
+      );
 
       const formatRes = await res.json();
 

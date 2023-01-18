@@ -43,20 +43,23 @@ const EditBlog = () => {
 
   const handleEdit = async () => {
     try {
-      const res = await fetch(`http://localhost:3001/blogs/edit/${param?.id}`, {
-        method: "PUT",
-        headers: {
-          token: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: blogDetails?.title,
-          category: blogDetails?.category,
-          content: blogDetails?.content,
-          author: blogDetails?.author,
-          time: time,
-        }),
-      });
+      const res = await fetch(
+        `https://blog-app-backend-one.vercel.app/blogs/edit/${param?.id}`,
+        {
+          method: "PUT",
+          headers: {
+            token: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: blogDetails?.title,
+            category: blogDetails?.category,
+            content: blogDetails?.content,
+            author: blogDetails?.author,
+            time: time,
+          }),
+        }
+      );
 
       const formatRes = await res.json();
       if (!formatRes?.isSuccess) {
